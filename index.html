@@ -1,188 +1,188 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Introduction to Scala</title>
+    <title>Introduction to Scala</title>
 
-		<meta name="description" content="Introduction to Scala">
-		<meta name="author" content="Jacek Laskowski">
+    <meta name="description" content="Introduction to Scala">
+    <meta name="author" content="Jacek Laskowski">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<div class="slides">
-				<section class="intro" data-transition="zoom">
-					<h1>Introduction to Scala</h1>
-					<h4>4,5-hour introduction</h4>
+      <div class="slides">
+        <section class="intro" data-transition="zoom">
+          <h1>Introduction to Scala</h1>
+          <h4>4,5-hour introduction</h4>
           <br>
-					<p>
-						<small>Created by <a href="http://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="http://twitter.com/jaceklaskowski">@jaceklaskowski</a></small>
-					</p>
-				</section>
+          <p>
+            <small>Created by <a href="http://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="http://twitter.com/jaceklaskowski">@jaceklaskowski</a></small>
+          </p>
+        </section>
 
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-							## JVM language
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is JVM language
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## JVM language
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is JVM language
 
-							* just like Java, Clojure, Groovy, Jython, Jacl, ...
-							* a wealth of ready-to-use libraries (and frameworks)
-								* there are plenty of them
-								* ...and most are open source
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is a functional programming language
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is functional
+              * just like Java, Clojure, Groovy, Jython, Jacl, ...
+              * a wealth of ready-to-use libraries (and frameworks)
+                * there are plenty of them
+                * ...and most are open source
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a functional programming language
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is functional
 
-							* Functional language
-								* function is a value
-									* f(), g(), whateverValidNameIsFine()
-									* Compare it to 5, "ala ma kota", -5e4, 3.141592
-								* basic structure to build applications
-								* familiar to most people - taught at Math
-									* input and output
-									* ...and no side effects
-							* immutable data structures
-							* functions are objects
-								* have their own type
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is functional language
+              * Functional language
+                * function is a value
+                  * f(), g(), whateverValidNameIsFine()
+                  * Compare it to 5, "ala ma kota", -5e4, 3.141592
+                * basic structure to build applications
+                * familiar to most people - taught at Math
+                  * input and output
+                  * ...and no side effects
+              * immutable data structures
+              * functions are objects
+                * have their own type
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is functional language
 
-							* Easier to write concurrent programms
-							* Leads to faster computations
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is a object-oriented programming language
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is object-oriented
+              * Easier to write concurrent programms
+              * Leads to faster computations
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a object-oriented programming language
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is object-oriented
 
-							* Object-oriented language
-								* Every value has a type
-								* value == a class/object instance
-							* Functions in Scala are `val`s
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is a statically-typed language
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is statically-typed
+              * Object-oriented language
+                * Every value has a type
+                * value == a class/object instance
+              * Functions in Scala are `val`s
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a statically-typed language
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is statically-typed
 
-							* the Scala compiler *infers* the types
-							* The compiler is the validity check
-								* application compiles == ready for production
-							* "Follow the types"
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is a strongly-typed language
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is strongly-typed
+              * the Scala compiler *infers* the types
+              * The compiler is the validity check
+                * application compiles == ready for production
+              * "Follow the types"
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a strongly-typed language
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is strongly-typed
 
-							* Everything is an object instance
-							* Everything has a type
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala has a very little to no boilerplate
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala - little to no boilerplate
+              * Everything is an object instance
+              * Everything has a type
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala has a very little to no boilerplate
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala - little to no boilerplate
 
-							* Compare it to other languages to see the difference - see Java
-							* Why to compare to Java? It still is the language of JVM.
-							* *implicits*
-							* *package objects*
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala interoperates with Java
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is a open source project
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala is open source
+              * Compare it to other languages to see the difference - see Java
+              * Why to compare to Java? It still is the language of JVM.
+              * *implicits*
+              * *package objects*
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala interoperates with Java
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a open source project
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is open source
 
-							* Open source licence
-							* 10 years on the market
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Prototyping with Scala REPL
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala REPL
+              * Open source licence
+              * 10 years on the market
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Prototyping with Scala REPL
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala REPL
 
-							* *R*ead, *E*val, *P*rint *L*oop
-							* Interactive interpreter
-							* Easy prototyping
-							* Experiment with Scala features
+              * *R*ead, *E*val, *P*rint *L*oop
+              * Interactive interpreter
+              * Easy prototyping
+              * Experiment with Scala features
 
 ```
 Welcome to Scala version 2.11.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_31).
@@ -191,24 +191,24 @@ Type :help for more information.
 
 scala>
 ```
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Scala REPL 
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala REPL 
 
-							* Special commands `:`
-							* `:help` to get started
-							* `:quit` to quit
-							* `:save`
-						</script>
-					</section>
-				</section>
+              * Special commands `:`
+              * `:help` to get started
+              * `:quit` to quit
+              * `:save`
+            </script>
+          </section>
+        </section>
 
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-						## Hello, World!
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Hello, World!
 
 ```
 object HelloWorld {
@@ -217,11 +217,11 @@ object HelloWorld {
   }
 }
 ```
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Hello, World! (2)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Hello, World! (2)
 
 ```
 object HelloWorld {
@@ -230,11 +230,11 @@ object HelloWorld {
   }
 }
 ```
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Hello, World! (3)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Hello, World! (3)
 
 ```
 object HelloWorld {
@@ -244,31 +244,31 @@ object HelloWorld {
   }
 }
 ```
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Hello, World! (4)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Hello, World! (4)
 
 ```
 println("Hello, World!")
 ```
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-						## Using Scala compiler
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ## Using Scala compiler
 
-						* `Hello.scala`
-						* `scalac Hello.scala`
-						* `scala Hello`
-						</script>
-					</section>
-				</section>
+            * `Hello.scala`
+            * `scalac Hello.scala`
+            * `scala Hello`
+            </script>
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h2>Values in Scala</h2>
+        <section>
+          <section>
+            <h2>Values in Scala</h2>
 
 <ul>
 <li>Keyword <code>val</code> declares a value of a type</li>
@@ -285,20 +285,20 @@ val sum100 = 1 to 100 sum
 val x :: xs = List(1, 2, 3, 4)
 </code></pre>
 </ul>
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Types in Scala
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Types in Scala
 
-							* **Int** - 32-bit signed integer
-							* **Long** - 64-bit signed integer
-							* **Char** - 16-bit unsigned integer for Unicode characters
-							* **Double** - double-precision floating point number
-							* **Boolean** - boolean value (`true` or `false`)
-							* **String** - a string
-						</script>
-					</section>
+              * **Int** - 32-bit signed integer
+              * **Long** - 64-bit signed integer
+              * **Char** - 16-bit unsigned integer for Unicode characters
+              * **Double** - double-precision floating point number
+              * **Boolean** - boolean value (`true` or `false`)
+              * **String** - a string
+            </script>
+          </section>
 
           <section data-markdown>
             <script type="text/template">
@@ -379,100 +379,100 @@ This is a type constructor: a 1st-order-kinded type.
             </script>
           </section>
 
-					<section data-markdown>
-						<script type="text/template">
-							## Tuples in Scala
+          <section data-markdown>
+            <script type="text/template">
+              ## Tuples in Scala
 
-							```
-							val t = ("Hello", 2)
-							t._1
-							t._2
-							```
+              ```
+              val t = ("Hello", 2)
+              t._1
+              t._2
+              ```
 
-							* type-safe containers for multiple values
-							* Useful to return more values from a method
-							* Each element has its own type
-							* Up to 22 values
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Option in Scala
+              * type-safe containers for multiple values
+              * Useful to return more values from a method
+              * Each element has its own type
+              * Up to 22 values
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Option in Scala
 
-							```
-							val o = Option("hello")
-							val s = Some("hello")
-							val n = None
-							```
+              ```
+              val o = Option("hello")
+              val s = Some("hello")
+              val n = None
+              ```
 
-							* type-safe optional value
-							* Option - abstract class
-								* Some - concrete value
-								* None - a single no value
-							* Example: division by 0
-								* math.sqrt
-							* isEmpty
-						</script>
-					</section>
-				</section>
+              * type-safe optional value
+              * Option - abstract class
+                * Some - concrete value
+                * None - a single no value
+              * Example: division by 0
+                * math.sqrt
+              * isEmpty
+            </script>
+          </section>
+        </section>
 
-				<section>
-					<section data-markdown>
-						<script type="text/template">
-							## Tools: sbt
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Tools: Typesafe Activator
-						</script>
-					</section>
-					<section data-markdown>
-						<script type="text/template">
-							## Tools: IntelliJ IDEA
-						</script>
-					</section>
-				</section>
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Tools: sbt
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Tools: Typesafe Activator
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Tools: IntelliJ IDEA
+            </script>
+          </section>
+        </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>Questions?</p>
+        <section style="text-align: left;">
+          <h1>THE END</h1>
+          <p>Questions?</p>
           <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a></h4>
-				</section>
+        </section>
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script>
+    <script>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
         width: 1200,
         //height: 875,
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
 
-		</script>
+    </script>
 
-	</body>
+  </body>
 </html>
