@@ -49,6 +49,20 @@
         </section>
 
         <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Why Scala</li>
+            <li>Installation</li>
+            <li>Scala REPL - Interactive development environment</li>
+            <li>Syntax</li>
+            <li>Project automation with sbt</li>
+            <li>Scala API Documentation with scaladoc</li>
+            <li>Writing specifications with specs2</li>
+            <li>I/O</li>
+          </ul>
+        </section>
+
+        <section>
           <section data-markdown>
             <script type="text/template">
               ## JVM language
@@ -58,10 +72,18 @@
             <script type="text/template">
               ## Scala is JVM language
 
-              * just like Java, Clojure, Groovy, Jython, Jacl, ...
-              * a wealth of ready-to-use libraries (and frameworks)
-                * there are plenty of them
-                * ...and most are open source
+* just like Java, Clojure, Groovy, Jython, Jacl, ...
+* a wealth of ready-to-use libraries (and frameworks)
+  * there are plenty of them
+  * ...and most are open source
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala is a multi-paradigm programming language
+
+* Encourages functional programming
+* Allows flexibility of object-oriented approach
             </script>
           </section>
           <section data-markdown>
@@ -73,25 +95,25 @@
             <script type="text/template">
               ## Scala is functional
 
-              * Functional language
-                * function is a value
-                  * f(), g(), whateverValidNameIsFine()
-                  * Compare it to 5, "ala ma kota", -5e4, 3.141592
-                * basic structure to build applications
-                * familiar to most people - taught at Math
-                  * input and output
-                  * ...and no side effects
-              * immutable data structures
-              * functions are objects
-                * have their own type
+* Functional language
+  * function is indeed a value
+    * `f()`, `g()`, `whateverValidNameIsFine()`
+    * Compare it to `5`, `"ala ma kota"`, `-5e4`, `3.141592`
+  * basic structure to build applications
+  * familiar to most people - taught at Math
+    * input and output
+    * no side effects
+* immutable data structures
+* functions are in fact objects
+  * have their own functional type
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
               ## Scala is functional language
 
-              * Easier to write concurrent programms
-              * Leads to faster computations
+* Easier to write concurrent programms
+* Leads to faster computations
             </script>
           </section>
           <section data-markdown>
@@ -103,10 +125,10 @@
             <script type="text/template">
               ## Scala is object-oriented
 
-              * Object-oriented language
-                * Every value has a type
-                * value == a class/object instance
-              * Functions in Scala are `val`s
+* Object-oriented language
+  * Every value has a type
+  * value == a class/object instance
+* Functions in Scala are `val`s
             </script>
           </section>
           <section data-markdown>
@@ -118,10 +140,10 @@
             <script type="text/template">
               ## Scala is statically-typed
 
-              * the Scala compiler *infers* the types
-              * The compiler is the validity check
-                * application compiles == ready for production
-              * "Follow the types"
+* the Scala compiler *infers* the types
+* The compiler is the validity check
+  * application compiles == ready for production
+* "Follow the types"
             </script>
           </section>
           <section data-markdown>
