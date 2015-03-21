@@ -65,164 +65,191 @@
         <section>
           <section data-markdown>
             <script type="text/template">
-              ## JVM language
+              # Why Scala
             </script>
           </section>
+        </section>
+        <section>
+          <h2>Why Scala</h2>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is JVM language
+## JVM language
 
-* just like Java, Clojure, Groovy, Jython, Jacl, ...
-* a wealth of ready-to-use libraries (and frameworks)
+* Just like Java, Clojure, Groovy, Jython, Jacl, ...
+* Compiles to Java bytecode
+* A wealth of ready-to-use libraries (and frameworks)
   * there are plenty of them
   * ...and most are open source
+* Should hence be a *no-brainer* to switch to Scala
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a multi-paradigm programming language
+## A multi-paradigm (blended) programming language
 
 * Encourages functional programming
-* Allows flexibility of object-oriented approach
+* Blends flexibility of object-oriented approach
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a functional programming language
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala is functional
+<br>
+## Functional programming language
+#### (1 of 3)
 
-* Functional language
-  * function is indeed a value
-    * `f()`, `g()`, `whateverValidNameIsFine()`
-    * Compare it to `5`, `"ala ma kota"`, `-5e4`, `3.141592`
-  * basic structure to build applications
-  * familiar to most people - taught at Math
-    * input and output
-    * no side effects
-* immutable data structures
+* function is a value
+  * `val f: String => Int = _.length`
+  * Compare `f` to `5`, `"ala ma kota"`, `-5e4`, `3.141592`
+* familiar to most people - taught at Math
+  * input and output
+  * no side effects
 * functions are in fact objects
   * have their own functional type
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is functional language
+## Functional programming language
+#### (2 of 3)
 
+* function is a basic structure to build applications
+  * function composition
+* immutable/persistent data structures
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+<br>
+## Functional programming language
+#### (3 of 3)
+
+* [Concise](http://dictionary.cambridge.org/dictionary/british/concise)
+  * short and clear, expressing what needs to be said without unnecessary words
+  * fewer lines of code = less bugs + less code to maintain
+  * Expressive syntax, e.g. implicits
 * Easier to write concurrent programms
-* Leads to faster computations
+  * Leads to faster computations
+* OO Design Patterns are part of the language itself
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a object-oriented programming language
+              ## Builder Pattern
+
+#### (a side slide perhaps for another courseware)
+
+```
+val app = TestApplicant() withNoForenames
+val input = TestCsvRow() matching(app) withForenames "Alice"
+```
+
+* Think how you'd go about it
+
+```
+case class TestApplicant(forenames: Option[String] = Some("Jacek")) {
+  def withNoForenames: TestApplicant = copy(forenames = None)
+}
+```
+* Borrowed from the talk [Code Reviews Gems](https://skillsmatter.com/skillscasts/5848-code-reviews-gems)
+
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is object-oriented
+## Object-oriented programming language
 
 * Object-oriented language
   * Every value has a type
   * value == a class/object instance
-* Functions in Scala are `val`s
+* Functions in Scala are `val`s, too!
+* Use types as soon and extensively as possible
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a statically-typed language
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala is statically-typed
+## Statically-typed programming language
 
-* the Scala compiler *infers* the types
+* Type inference
+  * The Scala compiler *infers* the types
 * The compiler is the validity check
-  * application compiles == ready for production
+  * application compiles == ready for production (*almost*)
 * "Follow the types"
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a strongly-typed language
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala is strongly-typed
+## A strongly-typed programming language
 
-              * Everything is an object instance
-              * Everything has a type
+* Everything is an object instance
+* Everything has a type
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala has a very little to no boilerplate
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala - little to no boilerplate
+## Little to no boilerplate
 
-              * Compare it to other languages to see the difference - see Java
-              * Why to compare to Java? It still is the language of JVM.
-              * *implicits*
-              * *package objects*
+* Compare it to other languages to see the difference - see Java
+* Why to compare to Java? It still is the language of JVM.
+* *implicits*
+* *package objects*
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala interoperates with Java
+              ## Java Interop
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Scala is a open source project
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala is open source
+## Open source project
 
-              * Open source licence
-              * 10 years on the market
+* Open source licence
+* 10 years on the market
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Prototyping with Scala REPL
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala REPL
+<br>
+## Scala REPL
 
-              * *R*ead, *E*val, *P*rint *L*oop
-              * Interactive interpreter
-              * Easy prototyping
-              * Experiment with Scala features
+* **R**_ead, **E**_valuate, **P**_rint **L**_oop
+* Interactive (development) environment
 
 ```
-Welcome to Scala version 2.11.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_31).
+Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_40).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
 scala>
 ```
+
+* Environment for prototyping
+* Experiment with Scala features
+* Quickly and easily learn Scala
+* Immediate feedback
+
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Scalable Language
+
+* Scale use of language features as their understanding grows
+* Develop scripts
+* Develop more complex applications
+* Develop concurrent, distributed, resilient, **reactive** systems
+* **Reactive** = scalable, resilient, responsive, event-driven
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
               ## Scala REPL 
 
-              * Special commands `:`
-              * `:help` to get started
-              * `:quit` to quit
-              * `:save`
+* Special commands
+  * Commands with `:` at the front
+* `:help` to get started
+* `:quit` to quit
+* `:save`
             </script>
           </section>
         </section>
@@ -281,9 +308,9 @@ println("Hello, World!")
             <script type="text/template">
             ## Using Scala compiler
 
-            * `Hello.scala`
-            * `scalac Hello.scala`
-            * `scala Hello`
+* `Hello.scala`
+* `scalac Hello.scala`
+* `scala Hello`
             </script>
           </section>
         </section>
@@ -313,12 +340,12 @@ val x :: xs = List(1, 2, 3, 4)
             <script type="text/template">
               ## Types in Scala
 
-              * **Int** - 32-bit signed integer
-              * **Long** - 64-bit signed integer
-              * **Char** - 16-bit unsigned integer for Unicode characters
-              * **Double** - double-precision floating point number
-              * **Boolean** - boolean value (`true` or `false`)
-              * **String** - a string
+* **Int** - 32-bit signed integer
+* **Long** - 64-bit signed integer
+* **Char** - 16-bit unsigned integer for Unicode characters
+* **Double** - double-precision floating point number
+* **Boolean** - boolean value (`true` or `false`)
+* **String** - a string
             </script>
           </section>
 
@@ -405,35 +432,55 @@ This is a type constructor: a 1st-order-kinded type.
             <script type="text/template">
               ## Tuples in Scala
 
-              ```
-              val t = ("Hello", 2)
-              t._1
-              t._2
-              ```
+```
+val t = ("Hello", 2)
+t._1
+t._2
+```
 
-              * type-safe containers for multiple values
-              * Useful to return more values from a method
-              * Each element has its own type
-              * Up to 22 values
+* type-safe containers for multiple values
+* Useful to return more values from a method
+* Each element has its own type
+* Up to 22 values
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
               ## Option in Scala
 
-              ```
-              val o = Option("hello")
-              val s = Some("hello")
-              val n = None
-              ```
+```
+val o = Option("hello")
+val s = Some("hello")
+val n = None
+```
 
-              * type-safe optional value
-              * Option - abstract class
-                * Some - concrete value
-                * None - a single no value
-              * Example: division by 0
-                * math.sqrt
-              * isEmpty
+* type-safe optional value
+* `Option[T]` - abstract class
+  * `Some` - concrete value
+  * `None` - a single no value
+* Example: division by 0
+  * `math.sqrt`
+* `isEmpty`
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Enumeration in Scala
+
+```
+object StateEnum extends Enumeration {
+  type State  = Value
+
+  val IDLE    = Value("Idle")
+  val RUNNING = Value("Running")
+  val STOPPED = Value("Stopped")
+}
+```
+
+* Using the Scala compiler to ensure type- and state-safety
+  * No other `State` acceptable
+  * Alternative to `String` states
+* No non-exhaustive match warning, though
             </script>
           </section>
         </section>
@@ -452,6 +499,17 @@ This is a type constructor: a 1st-order-kinded type.
           <section data-markdown>
             <script type="text/template">
               ## Tools: IntelliJ IDEA
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Resources
+
+* [Code Reviews Gems](https://skillsmatter.com/skillscasts/5848-code-reviews-gems) - video from Scala eXchange 2014 by [Richard Dallaway](http://richard.dallaway.com/)
+* [Scala: Getting Started](http://www.pluralsight.com/courses/scala-getting-started) - a Scala course from Pluralsight
             </script>
           </section>
         </section>
