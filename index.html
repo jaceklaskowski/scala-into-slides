@@ -51,7 +51,7 @@
         <section>
           <h2>Agenda</h2>
           <ul>
-            <li>Why Scala</li>
+            <li><a href="#/why-scala">Why Scala</a></li>
             <li>Installation</li>
             <li>Scala REPL - Interactive development environment</li>
             <li>Syntax</li>
@@ -62,7 +62,7 @@
           </ul>
         </section>
 
-        <section>
+        <section id="why-scala">
           <section data-markdown>
             <script type="text/template">
               # Why Scala
@@ -196,6 +196,35 @@ case class TestApplicant(forenames: Option[String] = Some("Jacek")) {
           </section>
           <section data-markdown>
             <script type="text/template">
+            <br>
+## Implicit classes
+
+```scala
+scala> case class Hello(name: String)
+defined class Hello
+
+scala> Hello("world")
+res0: Hello = Hello(world)
+
+scala> res0.hi
+<console>:11: error: value hi is not a member of Hello
+              res0.hi
+                   ^
+```
+
+* How would you fix it?
+
+```
+scala> implicit class HelloOps(h: Hello) { def hi = "hi" }
+defined class HelloOps
+
+scala> res0.hi
+res2: String = hi
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
               ## Java Interop
             </script>
           </section>
@@ -250,6 +279,128 @@ scala>
 * `:help` to get started
 * `:quit` to quit
 * `:save`
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            <br>
+## Lazy evaluation (1 of 3)
+
+* What's wrong with the `throwExceptionInside` method?
+
+```scala
+scala> def throwExceptionInside(e: Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: Exception)Nothing
+
+scala> throwExceptionInside(new NullPointerException())
+java.lang.NullPointerException
+  ... 43 elided
+```
+
+* It doesn't even get executed (!)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            <br>
+## Lazy evaluation (2 of 3)
+
+* The "old" version
+
+```scala
+scala> def throwExceptionInside(e: Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: Exception)Nothing
+```
+
+* Compare and note `=>` before the type
+
+```
+scala> def throwExceptionInside(e: => Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: => Exception)Nothing
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            <br>
+## Lazy evaluation (3 of 3)
+
+```
+scala> def throwExceptionInside(e: => Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: => Exception)Nothing
+```
+
+* Execution
+
+```
+scala> throwExceptionInside(new NullPointerException())
+About to throw the exception e
+java.lang.NullPointerException
+  at $anonfun$1.apply(<console>:12)
+  at $anonfun$1.apply(<console>:12)
+  at .throwExceptionInside(<console>:12)
+  ... 43 elided
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            <br>
+## Lazy evaluation for vals
+
+* Note that the initialization is lazily performed and no exception is thrown
+
+```
+scala> lazy val hello = throw new Exception("hello")
+hello: Nothing = <lazy>
+
+scala> hello
+java.lang.Exception: hello
+  at .hello$lzycompute(<console>:10)
+  at .hello(<console>:10)
+  ... 43 elided
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            <br>
+## Future[T]
+
+* `Future` is a computation that hasn't happened yet
+* `T` is the type of the result
+
+```
+scala> import concurrent._
+import concurrent._
+
+scala> import ExecutionContext.Implicits.global
+import ExecutionContext.Implicits.global
+
+scala> Future {
+     |   println("About to read a web page")
+     |   io.Source.fromURL("http://blog.jaceklaskowski.pl").mkString.contains("Jacek Laskowski")
+     | }
+About to read a web page
+res19: scala.concurrent.Future[Boolean] = scala.concurrent.impl.Promise$DefaultPromise@4adf2ec1
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Last value is the return value
             </script>
           </section>
         </section>
