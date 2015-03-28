@@ -134,7 +134,7 @@
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Builder Pattern
+              ## Builder Pattern (1 of 2)
 
 #### (a side slide perhaps for another courseware)
 
@@ -151,6 +151,37 @@ case class TestApplicant(forenames: Option[String] = Some("Jacek")) {
 }
 ```
 * Borrowed from the talk [Code Reviews Gems](https://skillsmatter.com/skillscasts/5848-code-reviews-gems)
+
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+<br>
+## Builder Pattern (2 of 2)
+
+```
+package com.example
+
+object BuilderDemo extends Builder(Map()) {
+}
+
+private [example] class Builder(val args: Map[String, Any]) {
+  val message = arg("m") _
+  val title = arg("t") _
+
+  def cmd =
+    args.flatMap { case (k,v) => "-" + k :: v.toString :: Nil }.toList.mkString(" ")
+
+  private def arg(k: String)(v: Any) = new Builder(args + (k -> v))
+}
+
+object BuilderDemoApp extends App {
+  val cmd = BuilderDemo.message("Message").title("Title").cmd
+  println("Executing: " + cmd)
+}
+```
+
+* Borrowed from [softprops/meow](https://github.com/softprops/meow/blob/master/src/main/scala/meow/Growl.scala)
 
             </script>
           </section>
