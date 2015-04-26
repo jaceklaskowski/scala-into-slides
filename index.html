@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,12 +40,33 @@
 
       <div class="slides">
         <section class="intro" data-transition="zoom">
-          <h1>Introduction to Scala</h1>
-          <h4>4,5-hour introduction</h4>
+          <h1>One day with Scala</h1>
+          <h4>Developing applications in object-functional programming language</h4>
           <br>
           <p>
             <small>Created by <a href="http://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="http://twitter.com/jaceklaskowski">@jaceklaskowski</a></small>
           </p>
+        </section>
+
+        <section>
+          <section>
+            <h2>About me...Jacek Laskowski</h2>
+            <p>
+              <img width="20%" src="images/jacek_laskowski_20141201_512px.png">
+            </p>
+            <ul>
+              <li>Scala developer, advocate, course instructor</li>
+              <li>Technical team leader in Codilime - <a href="http://deepsense.io/">DeepSense.io</a> project</li>
+              <li>Founder and leader of <a href="warsawscala.pl">Warsaw Scala Enthusiasts</a></li>
+              <li>Developing teams and software</li>
+              <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
+              <li>Blogger at <a href="http://blog.jaceklaskowski.pl">blog.jaceklaskowski.pl</a> and <a href="http://jaceklaskowski.pl">jaceklaskowski.pl</a></li>
+            </ul>
+          </section>
+          <section>
+            <h1>Picture time!</h1>
+            <a href="https://flic.kr/p/rdgugM"><img src="images/animal-smile.jpg"/></a>
+          </section>
         </section>
 
         <section>
@@ -59,6 +80,8 @@
             <li>Scala API Documentation with scaladoc</li>
             <li>Writing specifications with specs2</li>
             <li>I/O</li>
+            <li><a href="#/pattern-matching">Pattern matching</a></li>
+            <li><a href="#/case-classes">Case classes</a></li>
           </ul>
         </section>
 
@@ -677,6 +700,98 @@ object StateEnum extends Enumeration {
 * No non-exhaustive match warning, though
             </script>
           </section>
+        </section>
+
+        <section id="pattern-matching">
+          <h1>Pattern matching</h1>
+          <h3>in Scala</h3>
+        </section>
+        <section>
+          <h2>Pattern matching</h2>
+          <section data-markdown>
+            <script type="text/template">
+              ## Example
+
+```
+
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## About
+
+```
+... match { case ... }
+```
+
+* A series of `case`s
+* Cases checked until first one matches
+* First match wins
+* No other `case`s checked
+* No matching case leads to `scala.MatchError`
+            </script>
+          </section>
+        </section>
+
+        <section id="case-classes">
+          <h1>Case classes</h1>
+          <h3>in Scala</h3>
+        </section>
+        <section>
+          <h2>Case classes</h2>
+          <section data-markdown>
+            <script type="text/template">
+```
+case class Person(firstName: String, lastName: String)
+```
+
+* Case classes go hand in hand with pattern matching
+  * Extractors
+* Easier construction
+  * copy constructors
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## pattern matching
+
+```
+case class Person(firstName: String, lastName: String)
+
+def printFirstAndLastNames(p: Person) = p match {
+  case Person(first, last) => println(first + " " + last)
+}
+```
+
+```
+scala> printFirstAndLastNames(Person("Jacek", "Laskowski"))
+Jacek Laskowski
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## copy constructor
+
+```
+case class Person(firstName: String, lastName: String, age: Int)
+```
+
+```
+scala> val jacek = Person("Jacek", "Laskowski", 42)
+jacek: Person = Person(Jacek,Laskowski,42)
+
+scala> println("Happy Birthday, Jacek!")
+Happy Birthday, Jacek!
+
+scala> val olderJacek = jacek.copy(age = jacek.age + 1)
+olderJacek: Person = Person(Jacek,Laskowski,43)
+```
+            </script>
+          </section>
+        </section>
+
         </section>
 
         <section>
