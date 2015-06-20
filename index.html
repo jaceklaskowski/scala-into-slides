@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
 
@@ -35,7 +34,6 @@
   </head>
 
   <body>
-
     <div class="reveal">
 
       <div class="slides">
@@ -43,22 +41,20 @@
           <h1>One day with Scala</h1>
           <h4>Developing applications in object-functional programming language</h4>
           <br>
-          <p>
-            <small>Created by <a href="http://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="http://twitter.com/jaceklaskowski">@jaceklaskowski</a></small>
-          </p>
+          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a></h4>
         </section>
 
         <section>
           <section>
-            <h2>About me...Jacek Laskowski</h2>
+            <h2>About me...<a href="https://twitter.com/jaceklaskowski">@JacekLaskowski</a></h2>
             <p>
               <img width="20%" src="images/jacek_laskowski_20141201_512px.png">
             </p>
             <ul>
-              <li>Scala developer, advocate, course instructor</li>
+              <li>Self-employed at <a href="https://www.linkedin.com/in/jaceklaskowski">Japila Software</a> => jacek@japila.pl</li>
+              <li>Delivering Development Services | Consulting | Training</li>
               <li>Technical team leader in Codilime - <a href="http://deepsense.io/">DeepSense.io</a> project</li>
-              <li>Founder and leader of <a href="warsawscala.pl">Warsaw Scala Enthusiasts</a></li>
-              <li>Developing teams and software</li>
+              <li>Founder and leader of <a href="http://warsawscala.pl">Warsaw Scala Enthusiasts</a></li>
               <li><a href="https://java.net/website/java-champions/bios.html#Laskowski">Java Champion</a></li>
               <li>Blogger at <a href="http://blog.jaceklaskowski.pl">blog.jaceklaskowski.pl</a> and <a href="http://jaceklaskowski.pl">jaceklaskowski.pl</a></li>
             </ul>
@@ -93,14 +89,34 @@
           </section>
         </section>
         <section>
-          <h2>Why Scala</h2>
           <section data-markdown>
             <script type="text/template">
-## JVM language
+## Scalable Language
+
+* Scale use of language features as their understanding grows
+* Develop scripts
+* Develop more complex applications
+* Develop concurrent, distributed, resilient, **reactive** systems
+* **Reactive** = scalable, resilient, responsive, event-driven
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Used in various domains
+
+* Browser: [Scala.js](http://www.scala-js.org/)
+* [Apache Camel](http://camel.apache.org/) for DSL
+* [Play](https://playframework.com/) and [Lift](http://liftweb.net/) for web development
+* [Akka](http://akka.io/) for concurrent and reactive applications
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Scala is JVM language
 
 * Just like Java
-  * ...and Clojure, Groovy, Jython
-* Compiles to Java bytecode
+  * ...and Clojure, Groovy, Jython, et al.
+* Compiles down to Java bytecode
 * A wealth of ready-to-use libraries (and frameworks)
   * there are plenty of them
   * ...and most are open source
@@ -108,26 +124,35 @@
           </section>
           <section data-markdown>
             <script type="text/template">
-## A multi-paradigm (blended) programming language
-
-* Encourages functional programming
-* Blends flexibility of object-oriented approach
+## Seamless Java Interop
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
-<br>
+## A multi-paradigm (blended) programming language
+
+* Object-oriented at heart
+  * Blends flexibility of object-oriented approach
+  * Program with objects
+* Functional at surface
+  * Encourages functional programming
+  * Program with functions
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
 ## Functional programming language
 #### (1 of 3)
 
-* function is a value
+* In Scala, functions are just values, and so they need types
   * `val f: String => Int = _.length`
   * Compare `f` to `5`, `"ala ma kota"`, `-5e4`, `3.141592`
 * familiar to most people - taught at Math
   * input and output
   * no side effects
-* functions are in fact objects
+* functions are objects
   * have their own functional type
+* immutability, purity, composition, lazy evaluation
             </script>
           </section>
           <section data-markdown>
@@ -142,7 +167,6 @@
           </section>
           <section data-markdown>
             <script type="text/template">
-<br>
 ## Functional programming language
 #### (3 of 3)
 
@@ -157,77 +181,28 @@
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Builder Pattern (1 of 2)
-
-#### (a side slide perhaps for another courseware)
-
-```
-val app = TestApplicant() withNoForenames
-val input = TestCsvRow() matching(app) withForenames "Alice"
-```
-
-* Think how you'd go about it
-
-```
-case class TestApplicant(forenames: Option[String] = Some("Jacek")) {
-  def withNoForenames: TestApplicant = copy(forenames = None)
-}
-```
-* Borrowed from the talk [Code Reviews Gems](https://skillsmatter.com/skillscasts/5848-code-reviews-gems)
-
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-<br>
-## Builder Pattern (2 of 2)
-
-```
-package com.example
-
-object BuilderDemo extends Builder(Map()) {
-}
-
-private [example] class Builder(val args: Map[String, Any]) {
-  val message = arg("m") _
-  val title = arg("t") _
-
-  def cmd =
-    args.flatMap { case (k,v) => "-" + k :: v.toString :: Nil }.toList.mkString(" ")
-
-  private def arg(k: String)(v: Any) = new Builder(args + (k -> v))
-}
-
-object BuilderDemoApp extends App {
-  val cmd = BuilderDemo.message("Message").title("Title").cmd
-  println("Executing: " + cmd)
-}
-```
-
-* Borrowed from [softprops/meow](https://github.com/softprops/meow/blob/master/src/main/scala/meow/Growl.scala)
-
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
 ## Object-oriented programming language
 
 * Object-oriented language
   * Every value has a type
-  * value == a class/object instance
+  * value == object == a class instance
 * Functions in Scala are `val`s, too!
-* Use types as soon and extensively as possible
+* Encapsulation, inheritance, polymorphism are all here
             </script>
           </section>
           <section data-markdown>
             <script type="text/template">
 ## Statically-typed programming language
 
+* The compiler as validity check
+  * Verifies types of objects
+  * Application compiles => ready for production (*almost*)
+  * First level of defence against errors
 * Type inference
-  * The Scala compiler *infers* the types
-* The compiler is the validity check
-  * application compiles == ready for production (*almost*)
-* "Follow the types"
+  * Scala compiler *infers* the types
+  * You don't need to type type declarations, but the program is type-checked
+  * Safer applications with less typing
+* *"Follow the types"*
             </script>
           </section>
           <section data-markdown>
@@ -250,7 +225,59 @@ object BuilderDemoApp extends App {
           </section>
           <section data-markdown>
             <script type="text/template">
-            <br>
+## Open source project
+
+* [Open (source) licence](http://www.scala-lang.org/license.html)
+* 10 years on the market
+* Active community
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Tooling
+
+* Build tools - sbt, gradle, maven
+* IDE - IntelliJ IDEA, Scala IDE, NetBeans IDE
+* Web Frameworks - Play Framework, Spray
+* Distributed Toolkits - Akka, Apache Spark
+* Testing Libraries - specs2, ScalaTest, ScalaCheck
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Scala REPL
+
+* **R**_ead, **E**_valuate, **P**_rint **L**_oop
+* Interactive (development) environment
+
+```
+Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_40).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala>
+```
+
+* Environment for prototyping
+* Experiment with Scala features
+* Quickly and easily learn Scala
+* Immediate feedback
+
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Scala REPL 
+
+* Special commands
+  * Commands with `:` at the front
+* `:help` to get started
+* `:quit` to quit
+* `:save`
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
 ## Implicit classes
 
 ```scala
@@ -279,150 +306,6 @@ res2: String = hi
           </section>
           <section data-markdown>
             <script type="text/template">
-              ## Seamless Java Interop
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-## Open source project
-
-* [Open (source) licence](http://www.scala-lang.org/license.html)
-* 10 years on the market
-* Active community
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-## Tooling
-
-* Build tools - sbt, gradle, maven
-* IDE - IntelliJ IDEA, Scala IDE, NetBeans IDE
-* Web Frameworks - Play Framework, Spray
-* Distributed Toolkits - Akka, Apache Spark
-* Testing Libraries - specs2, ScalaTest, ScalaCheck
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-<br>
-## Scala REPL
-
-* **R**_ead, **E**_valuate, **P**_rint **L**_oop
-* Interactive (development) environment
-
-```
-Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_40).
-Type in expressions to have them evaluated.
-Type :help for more information.
-
-scala>
-```
-
-* Environment for prototyping
-* Experiment with Scala features
-* Quickly and easily learn Scala
-* Immediate feedback
-
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-## Scalable Language
-
-* Scale use of language features as their understanding grows
-* Develop scripts
-* Develop more complex applications
-* Develop concurrent, distributed, resilient, **reactive** systems
-* **Reactive** = scalable, resilient, responsive, event-driven
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-              ## Scala REPL 
-
-* Special commands
-  * Commands with `:` at the front
-* `:help` to get started
-* `:quit` to quit
-* `:save`
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-            <br>
-## Lazy evaluation (1 of 3)
-
-* What's wrong with the `throwExceptionInside` method?
-
-```scala
-scala> def throwExceptionInside(e: Exception) = {
-     |   println("About to throw the exception e")
-     |   throw e
-     | }
-throwExceptionInside: (e: Exception)Nothing
-
-scala> throwExceptionInside(new NullPointerException())
-java.lang.NullPointerException
-  ... 43 elided
-```
-
-* It doesn't even get executed (!)
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-            <br>
-## Lazy evaluation (2 of 3)
-
-* The "old" version
-
-```scala
-scala> def throwExceptionInside(e: Exception) = {
-     |   println("About to throw the exception e")
-     |   throw e
-     | }
-throwExceptionInside: (e: Exception)Nothing
-```
-
-* Compare and note `=>` before the type
-
-```
-scala> def throwExceptionInside(e: => Exception) = {
-     |   println("About to throw the exception e")
-     |   throw e
-     | }
-throwExceptionInside: (e: => Exception)Nothing
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
-            <br>
-## Lazy evaluation (3 of 3)
-
-```
-scala> def throwExceptionInside(e: => Exception) = {
-     |   println("About to throw the exception e")
-     |   throw e
-     | }
-throwExceptionInside: (e: => Exception)Nothing
-```
-
-* Execution
-
-```
-scala> throwExceptionInside(new NullPointerException())
-About to throw the exception e
-java.lang.NullPointerException
-  at $anonfun$1.apply(<console>:12)
-  at $anonfun$1.apply(<console>:12)
-  at .throwExceptionInside(<console>:12)
-  ... 43 elided
-```
-            </script>
-          </section>
-          <section data-markdown>
-            <script type="text/template">
             <br>
 ## Lazy evaluation for vals
 
@@ -442,7 +325,18 @@ java.lang.Exception: hello
           </section>
           <section data-markdown>
             <script type="text/template">
-            <br>
+## Last value is the return value
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <h1>Easy Concurrency</h1>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
 ## Future[T]
 
 * `Future` is a computation that hasn't happened yet
@@ -464,9 +358,63 @@ res19: scala.concurrent.Future[Boolean] = scala.concurrent.impl.Promise$DefaultP
 ```
             </script>
           </section>
+          <section>
+            <h2>Actors</h2>
+            <h3>Akka</h3>
+          </section>
+        </section>
+
+        <section>
           <section data-markdown>
             <script type="text/template">
-## Last value is the return value
+              ## Builder Pattern (1 of 2)
+
+#### (a side slide perhaps for another courseware)
+
+```
+val app = TestApplicant() withNoForenames
+val input = TestCsvRow() matching(app) withForenames "Alice"
+```
+
+* Think how you'd go about it
+
+```
+case class TestApplicant(forenames: Option[String] = Some("Jacek")) {
+  def withNoForenames: TestApplicant = copy(forenames = None)
+}
+```
+* Borrowed from the talk [Code Reviews Gems](https://skillsmatter.com/skillscasts/5848-code-reviews-gems)
+
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Builder Pattern (2 of 2)
+
+```
+package com.example
+
+object BuilderDemo extends Builder(Map()) {
+}
+
+private [example] class Builder(val args: Map[String, Any]) {
+  val message = arg("m") _
+  val title = arg("t") _
+
+  def cmd =
+    args.flatMap { case (k,v) => "-" + k :: v.toString :: Nil }.toList.mkString(" ")
+
+  private def arg(k: String)(v: Any) = new Builder(args + (k -> v))
+}
+
+object BuilderDemoApp extends App {
+  val cmd = BuilderDemo.message("Message").title("Title").cmd
+  println("Executing: " + cmd)
+}
+```
+
+* Borrowed from [softprops/meow](https://github.com/softprops/meow/blob/master/src/main/scala/meow/Growl.scala)
+
             </script>
           </section>
         </section>
@@ -532,6 +480,79 @@ println("Hello, World!")
           </section>
         </section>
 
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+## Lazy evaluation (1 of 3)
+
+* What's wrong with the `throwExceptionInside` method?
+
+```scala
+scala> def throwExceptionInside(e: Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: Exception)Nothing
+
+scala> throwExceptionInside(new NullPointerException())
+java.lang.NullPointerException
+  ... 43 elided
+```
+
+* It doesn't even get executed (!)
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Lazy evaluation (2 of 3)
+
+* The "old" version
+
+```scala
+scala> def throwExceptionInside(e: Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: Exception)Nothing
+```
+
+* Compare and note `=>` before the type
+
+```
+scala> def throwExceptionInside(e: => Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: => Exception)Nothing
+```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+## Lazy evaluation (3 of 3)
+
+```
+scala> def throwExceptionInside(e: => Exception) = {
+     |   println("About to throw the exception e")
+     |   throw e
+     | }
+throwExceptionInside: (e: => Exception)Nothing
+```
+
+* Execution
+
+```
+scala> throwExceptionInside(new NullPointerException())
+About to throw the exception e
+java.lang.NullPointerException
+  at $anonfun$1.apply(<console>:12)
+  at $anonfun$1.apply(<console>:12)
+  at .throwExceptionInside(<console>:12)
+  ... 43 elided
+```
+            </script>
+          </section>
+        </section>
         <section>
           <section>
             <h2>Values in Scala</h2>
@@ -797,17 +818,28 @@ olderJacek: Person = Person(Jacek,Laskowski,43)
         <section>
           <section data-markdown>
             <script type="text/template">
-              ## Tools: sbt
+              # Tools
             </script>
           </section>
+        </section>
+        <section>
           <section data-markdown>
             <script type="text/template">
-              ## Tools: Typesafe Activator
+              # sbt
             </script>
           </section>
+        </section>
+        <section>
           <section data-markdown>
             <script type="text/template">
-              ## Tools: IntelliJ IDEA
+              # Typesafe Activator
+            </script>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              # IntelliJ IDEA
             </script>
           </section>
         </section>
@@ -823,14 +855,20 @@ olderJacek: Person = Person(Jacek,Laskowski,43)
           </section>
         </section>
 
-        <section style="text-align: left;">
-          <h1>THE END</h1>
-          <p>Questions?</p>
-          <h4><a href="https://blog.jaceklaskowski.pl">Jacek Laskowski</a> / <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> / <a href="https://github.com/jaceklaskowski">GitHub</a></h4>
+        <section data-background-image="images/end.jpg">
+          <!-- THAT'S IT FOLKS -->
+        </section>
+
+        <section style="text-align: left">
+          <h1>Questions?</h1>
+          <p>
+            - Visit <a href="https://blog.jaceklaskowski.pl">Jacek Laskowski's blog</a><br>
+            - Follow <a href="https://twitter.com/jaceklaskowski">@jaceklaskowski</a> at twitter<br>
+            - Leverage <a href="https://github.com/jaceklaskowski">Jacek's projects at GitHub</a>
+          </p>
         </section>
 
       </div>
-
     </div>
 
     <script src="lib/js/head.min.js"></script>
